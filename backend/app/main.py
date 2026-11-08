@@ -210,12 +210,30 @@ if os.path.exists(frontend_path):
     js_path = os.path.join(frontend_path, "js")
     widget_path = os.path.join(frontend_path, "widget")
 
+    class StrictMimeStaticFiles(StaticFiles):
+        """Serve JS/CSS with explicit MIME types.
+
+        Some OS mime.types databases map .js -> text/plain, which browsers
+        reject under strict MIME checking (X-Content-Type-Options: nosniff).
+        """
+
+        def file_response(self, full_path, stat_result, scope, status_code=200):
+            response = super().file_response(full_path, stat_result, scope, status_code=status_code)
+            lowered = full_path.lower()
+            if lowered.endswith(".js"):
+                response.headers["content-type"] = "text/javascript; charset=utf-8"
+            elif lowered.endswith(".mjs"):
+                response.headers["content-type"] = "text/javascript; charset=utf-8"
+            elif lowered.endswith(".css"):
+                response.headers["content-type"] = "text/css; charset=utf-8"
+            return response
+
     if os.path.exists(css_path):
-        app.mount("/css", StaticFiles(directory=css_path), name="css")
+        app.mount("/css", StrictMimeStaticFiles(directory=css_path), name="css")
     if os.path.exists(js_path):
-        app.mount("/js", StaticFiles(directory=js_path), name="js")
+        app.mount("/js", StrictMimeStaticFiles(directory=js_path), name="js")
     if os.path.exists(widget_path):
-        app.mount("/widget", StaticFiles(directory=widget_path), name="widget")
+        app.mount("/widget", StrictMimeStaticFiles(directory=widget_path), name="widget")
 
 
 @app.get("/")
