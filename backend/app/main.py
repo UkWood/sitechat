@@ -210,22 +210,37 @@ if os.path.exists(frontend_path):
     js_path = os.path.join(frontend_path, "js")
     widget_path = os.path.join(frontend_path, "widget")
 
-    class StrictMimeStaticFiles(StaticFiles):
-        """Serve JS/CSS with explicit MIME types.
+    _STRICT_MIME_TYPES = {
+        ".js": "text/javascript; charset=utf-8",
+        ".mjs": "text/javascript; charset=utf-8",
+        ".css": "text/css; charset=utf-8",
+        ".html": "text/html; charset=utf-8",
+        ".json": "application/json; charset=utf-8",
+        ".svg": "image/svg+xml",
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".gif": "image/gif",
+        ".webp": "image/webp",
+        ".ico": "image/x-icon",
+    }
 
-        Some OS mime.types databases map .js -> text/plain, which browsers
-        reject under strict MIME checking (X-Content-Type-Options: nosniff).
+    class StrictMimeStaticFiles(StaticFiles):
+        """Serve static files with explicit MIME types.
+
+        Some OS mime.types databases (and Windows registry mappings) resolve
+        .js -> text/plain, which browsers reject under strict MIME checking
+        (X-Content-Type-Options: nosniff).  We override the content-type
+        header for known extensions so responses never depend on the host OS.
         """
 
         def file_response(self, full_path, stat_result, scope, status_code=200):
             response = super().file_response(full_path, stat_result, scope, status_code=status_code)
             lowered = full_path.lower()
-            if lowered.endswith(".js"):
-                response.headers["content-type"] = "text/javascript; charset=utf-8"
-            elif lowered.endswith(".mjs"):
-                response.headers["content-type"] = "text/javascript; charset=utf-8"
-            elif lowered.endswith(".css"):
-                response.headers["content-type"] = "text/css; charset=utf-8"
+            for ext, content_type in _STRICT_MIME_TYPES.items():
+                if lowered.endswith(ext):
+                    response.headers["content-type"] = content_type
+                    break
             return response
 
     if os.path.exists(css_path):
@@ -292,6 +307,17 @@ async def login_page():
     if os.path.exists(login_path):
         return _html_file_response("login.html")
     return {"error": "Login page not found"}
+
+
+@app.get("/favicon.ico")
+async def favicon_ico():
+    """Serve the site icon (avoids browser 404 for the default /favicon.ico)."""
+    for name in ("favicon.ico", "favicon.svg"):
+        path = os.path.join(frontend_path, name)
+        if os.path.exists(path):
+            media_type = "image/x-icon" if name.endswith(".ico") else "image/svg+xml"
+            return FileResponse(path, media_type=media_type)
+    return {"error": "favicon not found"}
 
 
 @app.get("/api")
