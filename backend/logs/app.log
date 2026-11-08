@@ -1272,3 +1272,82 @@
 2026-11-08 09:23:11.826 | INFO     | app.services.rag_engine:_sync_retrieve:353 - Filtered to 3 docs for site: https://example.com
 2026-11-08 09:23:11.830 | INFO     | app.services.rag_engine:_sync_retrieve:353 - Filtered to 2 docs for site: https://site1.com
 2026-11-08 09:23:11.903 | WARNING  | app.services.rag_engine:_generate_follow_ups:488 - Follow-up generation failed: LLM error
+2026-11-08 10:29:43.196 | INFO     | app.main:<module>:197 - Frontend path: /workspace/frontend
+2026-11-08 10:29:44.435 | ERROR    | app.services.auth:decode_token:198 - JWT decode error: Not enough segments
+2026-11-08 10:29:45.717 | INFO     | app.services.auth:ensure_admin_exists:422 - Admin account requires password change (migrated missing must_change_password for first-time setup)
+2026-11-08 10:29:45.717 | INFO     | app.services.auth:ensure_admin_exists:425 - Admin user exists: admin@example.com
+2026-11-08 10:29:46.036 | INFO     | app.services.auth:ensure_admin_exists:425 - Admin user exists: admin@example.com
+2026-11-08 10:29:47.406 | INFO     | app.services.auth:delete_user_with_transfer:398 - Transferred 0 sites from user user_to_delete to admin admin_user_id_123
+2026-11-08 10:29:47.406 | INFO     | app.services.auth:delete_user_with_transfer:401 - Transferred 0 agents from user user_to_delete to admin admin_user_id_123
+2026-11-08 10:29:47.802 | WARNING  | app.core.widget_security:enforce_site_origin:58 - Blocked widget request for site test_site_123 from unauthorized domain: evil.com
+2026-11-08 10:29:48.714 | INFO     | app.routes.embed:get_widget_sri_hash:72 - Generated SRI hash for widget: sha384-+Zohn8YayoPyqMBX6r5oOHe...
+2026-11-08 10:29:48.799 | INFO     | app.routes.handoff:create_handoff:127 - Created handoff handoff_001 for session session_123
+2026-11-08 10:29:48.812 | INFO     | app.routes.handoff:create_handoff:127 - Created handoff handoff_001 for session session_123
+2026-11-08 10:29:48.819 | INFO     | app.routes.handoff:create_handoff:127 - Created handoff handoff_001 for session session_123
+2026-11-08 10:29:48.903 | INFO     | app.routes.handoff:abandon_handoff_public:220 - Handoff handoff_001 abandoned by visitor (session session_123)
+2026-11-08 10:29:48.931 | INFO     | app.routes.handoff:update_handoff_status:386 - Handoff handoff_001 status updated to active by user@example.com
+2026-11-08 10:29:48.940 | INFO     | app.routes.handoff:update_handoff_status:386 - Handoff handoff_001 status updated to resolved by user@example.com
+2026-11-08 10:29:48.946 | INFO     | app.routes.handoff:update_handoff_status:386 - Handoff handoff_001 status updated to abandoned by user@example.com
+2026-11-08 10:29:48.981 | INFO     | app.routes.handoff:assign_handoff_to_agent:440 - Handoff handoff_001 assigned to agent Agent Assign (agent_assign_1) by admin@example.com
+2026-11-08 10:29:49.123 | INFO     | app.routes.handoff:update_handoff_status:386 - Handoff handoff_001 status updated to active by user@example.com
+2026-11-08 10:29:49.481 | INFO     | app.database.mongodb:connect:28 - Connected to MongoDB: sitechat
+2026-11-08 10:29:49.484 | ERROR    | app.database.mongodb:connect:31 - Failed to connect to MongoDB: Connection refused
+2026-11-08 10:29:49.487 | INFO     | app.database.mongodb:disconnect:38 - Disconnected from MongoDB
+2026-11-08 10:29:49.493 | INFO     | app.providers.database.mongodb_provider:connect:43 - Connected to MongoDB: sitechat
+2026-11-08 10:29:52.002 | INFO     | app.database.vector_store:add_documents:83 - Added 2 documents to vector store
+2026-11-08 10:29:52.897 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.897 | INFO     | app.providers.factory:get_llm:22 - Initializing LLM provider: ollama
+2026-11-08 10:29:52.899 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.899 | INFO     | app.providers.factory:get_llm:22 - Initializing LLM provider: invalid_provider
+2026-11-08 10:29:52.901 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.901 | INFO     | app.providers.factory:get_llm:22 - Initializing LLM provider: ollama
+2026-11-08 10:29:52.904 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.904 | INFO     | app.providers.factory:get_embeddings:80 - Initializing embeddings provider: huggingface
+2026-11-08 10:29:52.908 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.908 | INFO     | app.providers.factory:get_embeddings:80 - Initializing embeddings provider: ollama
+2026-11-08 10:29:52.909 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.910 | INFO     | app.providers.factory:get_embeddings:80 - Initializing embeddings provider: invalid_provider
+2026-11-08 10:29:52.912 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.912 | INFO     | app.providers.factory:get_embeddings:80 - Initializing embeddings provider: huggingface
+2026-11-08 10:29:52.914 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.915 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: faiss
+2026-11-08 10:29:52.917 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.917 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: faiss
+2026-11-08 10:29:52.919 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.920 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: faiss
+2026-11-08 10:29:52.922 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.924 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: chroma
+2026-11-08 10:29:52.926 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.926 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: chroma
+2026-11-08 10:29:52.930 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.930 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: invalid_provider
+2026-11-08 10:29:52.933 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.933 | INFO     | app.providers.factory:get_embeddings:80 - Initializing embeddings provider: huggingface
+2026-11-08 10:29:52.933 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: faiss
+2026-11-08 10:29:52.935 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.935 | INFO     | app.providers.factory:get_llm:22 - Initializing LLM provider: ollama
+2026-11-08 10:29:52.935 | INFO     | app.providers.factory:get_embeddings:80 - Initializing embeddings provider: huggingface
+2026-11-08 10:29:52.935 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.936 | INFO     | app.providers.factory:get_llm:22 - Initializing LLM provider: ollama
+2026-11-08 10:29:52.936 | INFO     | app.providers.factory:get_embeddings:80 - Initializing embeddings provider: huggingface
+2026-11-08 10:29:52.979 | INFO     | app.providers.factory:clear_provider_cache:186 - Provider cache cleared
+2026-11-08 10:29:52.979 | INFO     | app.providers.factory:get_vector_store:119 - Initializing vector store provider: faiss
+2026-11-08 10:29:52.980 | WARNING  | app.providers.factory:get_vector_store:132 - Could not load FAISS index: Corrupted index, creating new one
+2026-11-08 10:29:53.008 | WARNING  | app.core.security:validate_widget_domain:346 - Widget request from unauthorized domain: malicious.com
+2026-11-08 10:29:53.044 | WARNING  | app.services.crawler:_fetch_page:119 - Access forbidden (403) for https://example.com/blocked - site may be blocking crawlers
+2026-11-08 10:29:53.047 | WARNING  | app.services.crawler:_fetch_page:123 - Rate limited (429) for https://example.com/limited - site has bot protection
+2026-11-08 10:29:53.051 | DEBUG    | app.services.crawler:_fetch_page:127 - HTTP 404 for https://example.com/missing
+2026-11-08 10:29:53.085 | INFO     | app.services.crawler:crawl:101 - Crawled: https://example.com (1/2)
+2026-11-08 10:29:53.087 | INFO     | app.services.crawler:crawl:101 - Crawled: https://example.com/page5 (2/2)
+2026-11-08 10:29:53.088 | INFO     | app.services.crawler:crawl:111 - Crawl complete. Total pages: 2
+2026-11-08 10:29:53.093 | INFO     | app.services.crawler:crawl:101 - Crawled: https://example.com (1/5)
+2026-11-08 10:29:53.095 | INFO     | app.services.crawler:crawl:101 - Crawled: https://example.com/ (2/5)
+2026-11-08 10:29:53.095 | INFO     | app.services.crawler:crawl:111 - Crawl complete. Total pages: 2
+2026-11-08 10:29:53.099 | INFO     | app.services.crawler:crawl:111 - Crawl complete. Total pages: 0
+2026-11-08 10:29:53.105 | ERROR    | app.services.crawler:_fetch_page:175 - Error fetching https://example.com/error: Network error
+2026-11-08 10:29:53.184 | WARNING  | app.services.document_processor:_get_loader:148 - Failed to create loader for .md: Loader error
+2026-11-08 10:29:53.190 | ERROR    | app.services.document_processor:process_file:118 - Error processing test.txt: Parse error
+2026-11-08 10:29:53.213 | WARNING  | app.services.rag_engine:_rewrite_query:332 - Query rewriting failed: LLM error
+2026-11-08 10:29:53.225 | INFO     | app.services.rag_engine:_sync_retrieve:353 - Filtered to 3 docs for site: https://example.com
+2026-11-08 10:29:53.229 | INFO     | app.services.rag_engine:_sync_retrieve:353 - Filtered to 2 docs for site: https://site1.com
+2026-11-08 10:29:53.287 | WARNING  | app.services.rag_engine:_generate_follow_ups:488 - Follow-up generation failed: LLM error

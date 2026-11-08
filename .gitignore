@@ -1,26 +1,2 @@
-# Python
-__pycache__/
-*.py[cod]
-.pytest_cache/
-backend/.venv/
-.venv/
-*.egg-info/
-
-# Node
-node_modules/
-
-# Test/build artifacts
-.tmp/
-coverage/
-.coverage
-
-# Env & secrets
-.env
-*.local
-
-# Data & logs
-backend/data/
-logs/
-
-# OS
-.DS_Store
+*.log
+*.bundle
